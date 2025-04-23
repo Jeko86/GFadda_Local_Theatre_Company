@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GFadda_Local_Theatre_Company.Models.Comment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Post.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Post.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentBody)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Post.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Post.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.User.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CommentBody)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IsApproved)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditComment", new { id = item.CommentId }) |
+        @Html.ActionLink("Details", "CommentsDetails", new { id = item.CommentId }) |
+        @Html.ActionLink("Delete", "DeleteComment", new { id = item.CommentId })
+    </td>
+</tr>
+}
+
+</table>

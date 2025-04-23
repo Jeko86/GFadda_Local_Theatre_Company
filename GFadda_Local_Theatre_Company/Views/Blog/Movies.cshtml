@@ -1,0 +1,50 @@
+﻿@model IEnumerable<GFadda_Local_Theatre_Company.Models.Post>
+
+@{
+    ViewBag.Title = "Movies";
+}
+
+<h2>Movies List</h2>
+
+    <table class="table-responsive">
+        
+        @foreach (var item in Model)
+        {
+
+            <tr>
+
+                <td>                    
+                   <img src="@Url.Content("~/Images/Posters/" + item.PostId + ".jpg")" alt=" " style="width:150px;height:212px;">
+                    
+                </td> 
+                <td>
+                    <hr />
+                    <H2 class="col-sm-10">@Html.DisplayFor(modelItem => item.Title)</H2>
+
+                    <h4 class="col-sm-10">Review</h4>
+                    <p class="col-sm-10 text-justify table-responsive">@Html.DisplayFor(modelItem => item.Description)</p>
+
+                    <p class="col-sm-10 text-justify">Data Poste:@Html.DisplayFor(modelItem => item.DatePosted)</p>
+                    <p class="col-sm-10 text-justify">
+                        By :
+                        @Html.DisplayFor(modelItem => item.Staff.FirstName)
+                        @Html.DisplayFor(modelItem => item.Staff.LastName)
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="text-center">Buy the movie to support us</h4>
+                    <div id="home-btn" class="btn btn-default" style="width: 150px">
+                        <a href="https://www.amazon.co.uk/">
+                            <img src="~/Images/Website_Images/amazon.png" class="img-responsive center-block " width="26" height="26" />
+                        </a>
+
+                    </div>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    

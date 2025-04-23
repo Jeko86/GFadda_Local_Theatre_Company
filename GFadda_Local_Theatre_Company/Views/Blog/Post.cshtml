@@ -1,0 +1,59 @@
+﻿@model IEnumerable<GFadda_Local_Theatre_Company.Models.Post>
+
+@{
+    ViewBag.Title = "Post";
+}
+
+<h2>Communications</h2>
+@if (TempData["AllertMessage"] != null)
+{
+    <br />
+    <div class="alert alert-success">
+        <strong>@TempData["AllertMessage"]</strong>
+    </div>
+    <br />
+}
+<div class="container-fluid">
+
+    @foreach (var item in Model)
+    {
+
+        if (item.IsApproved == true)
+        {
+            <h2 class="text-left">
+                @Html.ActionLink(item.Title, "PostDetails", new { id = item.PostId })
+            </h2>
+            <br />          
+            <div class="row" style="padding-top:1em">
+                <div class="col-sm-20 text-justify">
+                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                    <br />
+                    <p class="text-right">
+                        <div class="text-right">
+
+                        </div>
+                        <div class="text-right">
+                            <p>
+                                Witten by:
+                                @Html.DisplayFor(modelItem => item.Staff.FirstName)
+                                @Html.DisplayFor(modelItem => item.Staff.LastName),
+
+                                @Html.DisplayFor(modelItem => item.DatePosted)
+                            </p>
+
+                        </div>
+                    </p>
+                    <br />
+                </div>
+            </div>
+            <div class="row" style="padding-top:1em">
+                <div class="col-sm-8 text-justify">
+                        <a href="#">@Html.ActionLink("Comment ", "Comments", new { id = item.PostId })<span class="badge"> @item.Comments.Count </span></a><br>
+                </div>
+            </div>
+        }
+
+    }
+</div>
+
+

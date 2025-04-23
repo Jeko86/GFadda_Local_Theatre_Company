@@ -1,0 +1,70 @@
+﻿@model GFadda_Local_Theatre_Company.Models.ViewModels.PostCommentsViewModel
+
+@{
+    ViewBag.Title = "Comments";
+}
+
+<h2>@Model.Post.Title</h2>
+<p>@Model.Post.Description</p>
+<p class="text-justify">Written by: @Model.Post.Staff.FirstName @Model.Post.Staff.LastName @Model.Post.DatePosted </p>
+
+@if (Request.IsAuthenticated == false)
+{
+    <div class="alert alert-warning" style="text-align: center">
+        <strong>
+            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) to write a comment or
+            @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) a new account.
+        </strong>
+    </div>
+}
+
+@if (User.IsInRole("Suspended"))
+{
+    <div class="alert alert-warning" style="text-align: center">
+        <strong>
+            <img src="~/Images/Website_Images/Allert.png" class="img-responsive center-block" width="30" height="30" />
+            Your account has been suspended, please @Html.ActionLink("Contact", "Contact", "Home") the administration for further info.
+        </strong>
+    </div>
+}
+
+<hr />
+<h4>Comments</h4>
+
+    @foreach (var item in Model.Comments)
+    {
+
+        <div class="text-left">
+            <p style="color:darkcyan">
+                Written By
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+                @Html.DisplayFor(modelItem => item.User.LastName), on date
+                @Html.DisplayFor(modelItem => item.DatePosted) :
+            </p>
+            <p></p>
+            <p>@Html.DisplayFor(modelItem => item.CommentBody)</p>
+
+        </div>
+    }
+
+@if (User.IsInRole("Admin") || User.IsInRole("Staff") || User.IsInRole("Member"))
+{
+    @Html.ActionLink(" Write Comment", "CreateComment", new { id = Model.Post.PostId })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

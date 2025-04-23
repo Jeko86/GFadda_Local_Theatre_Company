@@ -1,0 +1,84 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Local Theatre Company</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+
+        body {
+            font: 20px Montserrat, sans-serif;
+            line-height: 1.8;
+            color: #2f2f2f; /*black gray*/
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        .bg-1 {
+            background: linear-gradient(to top, #000000 52%, #cc0000 130%); 
+            color: #fff;
+        }
+
+        .container-fluid {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+
+        .margin {
+            margin-bottom: 45px;
+        }
+
+        /*unvisited link*/
+        a:link {
+            color: white;
+            text-decoration: none;
+            font-size: 200%;
+        }
+
+        /*visited link*/
+        a:visited {
+            color: white;
+            text-decoration: none;
+            font-size: 200%;
+        }
+
+        /*mouse over link*/
+        a:hover {
+            color: lightblue;
+            text-decoration: none;
+            font-size: 200%;
+        }
+
+        /*select link*/
+        a:active {
+            color: white;
+            text-decoration: none;
+            font-size: 200%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid bg-1 text-center">
+        <a href="@Url.Action("Index", "Home")" class="active">
+            <img src="~/Images/Website_Images/Logo_Transparence.png" class="img-responsive center-block " width = "682" height = "221"/>
+            <video autoplay loop muted class="img-responsive" src="~/Images/Website_Images/Splash_Screen_Video.mp4" />
+        </a>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

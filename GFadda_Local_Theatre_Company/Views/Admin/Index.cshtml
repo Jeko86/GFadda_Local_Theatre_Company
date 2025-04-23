@@ -1,0 +1,56 @@
+﻿@model IEnumerable<GFadda_Local_Theatre_Company.Models.User>
+
+@{
+    ViewBag.Title = "Users's List";
+}
+
+<h2>Index</h2>
+
+@if (TempData["AllertMessage"] != null)
+{
+    <br />
+    <div class="alert alert-success">
+        <strong>@TempData["AllertMessage"]</strong>
+    </div>
+    <br />
+}
+
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>       
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentRole)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>          
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentRole)
+            </td>
+
+            <td>
+                <button type="button" class="btn btn-default">@Html.ActionLink("Details", "Details", new { id = item.Id })</button>
+
+
+                @*Only the administrator can display the option To delete a User*@
+                @if (User.IsInRole("Admin"))
+                {
+                    <button type="button" class="btn btn-default">@Html.ActionLink("Role", "ChangeRole", new { id = item.Id })</button>
+
+                }
+            </td>
+        </tr>
+    }
+
+</table>

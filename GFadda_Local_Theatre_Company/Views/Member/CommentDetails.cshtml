@@ -1,0 +1,41 @@
+﻿@model GFadda_Local_Theatre_Company.Models.Comment
+
+@{
+    ViewBag.Title = "CommentDetails";
+}
+
+<h2>CommentDetails</h2>
+
+<div>
+    <h4>Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentBody)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommentBody)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatePosted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatePosted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsApproved)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "MemberCommentList")
+</p>

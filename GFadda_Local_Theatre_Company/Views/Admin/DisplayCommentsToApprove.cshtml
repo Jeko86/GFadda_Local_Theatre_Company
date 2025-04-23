@@ -1,0 +1,57 @@
+﻿@model IEnumerable<GFadda_Local_Theatre_Company.Models.Comment>
+
+@{
+    ViewBag.Title = "DisplayCommnetsToApprove";
+}
+
+<h2>DisplayCommnetsToApprove</h2>
+
+@if (TempData["AllertMessage"] != null)
+{
+    <br />
+    <div class="alert alert-success">
+        <strong>@TempData["AllertMessage"]</strong>
+    </div>
+    <br />
+}
+
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Post.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentBody)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatePosted)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Post.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentBody)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePosted)
+            </td>
+            <td>
+                @Html.ActionLink("Approve comment", "ApproveComment", new { id = item.CommentId }) |
+                @Html.ActionLink("Delete", "DeleteComment", new { id = item.CommentId })
+            </td>
+        </tr>
+    }
+
+</table>
